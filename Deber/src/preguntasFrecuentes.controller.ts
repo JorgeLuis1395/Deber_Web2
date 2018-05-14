@@ -11,9 +11,12 @@ export class PreguntasFrecuentesController {
         const parametrosConsulta=request.query;
          this.preguntas_frecuentes.push(new preguntasfrecuentesParametros(parametrosConsulta.preguntas1, parametrosConsulta.respuestas));
         console.log(request.preguntas1);
-            preguntasHtml=preguntasHtml.concat('<h1> Pregunta </h1> ',request.preguntas1);
-            preguntasHtml=preguntasHtml.concat('<p> Respuesta</p>', request.respuestas);
-
+           // preguntasHtml=preguntasHtml.concat('<h1> Pregunta </h1> ',request.preguntas1);
+           // preguntasHtml=preguntasHtml.concat('<p> Respuesta</p>', request.respuestas);
+        this.preguntas_frecuentes.forEach(value => {
+            preguntasHtml=preguntasHtml.concat('<h1> Pregunta </h1> ',value.preguntas1);
+            preguntasHtml=preguntasHtml.concat('<p> Respuesta</p>', value.respuestas);
+        });
         return response.send(this.preguntas_frecuentes);
     }
 
